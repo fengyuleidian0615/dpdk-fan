@@ -548,7 +548,9 @@ alloc_seg(struct rte_memseg *ms, void *addr, int socket_id,
 			}
 		}
 	}
-	mmap_flags = MAP_SHARED | MAP_POPULATE | MAP_FIXED;
+
+#define MAP_TVM_SHARED 0x200000
+	mmap_flags = MAP_SHARED | MAP_POPULATE | MAP_FIXED | MAP_TVM_SHARED;
 
 	huge_register_sigbus();
 
